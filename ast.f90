@@ -4,6 +4,9 @@ module ast
 type :: ExprC
 end type ExprC
 
+type :: Value 
+end type Value 
+
 
 type :: Symbol
   character(:), allocatable :: symb
@@ -40,6 +43,34 @@ type, extends (ExprC) :: LamC
   type(Symbol), allocatable :: params
   type(ExprC) :: body
 end type LamC
+
+type :: Binding
+    type(Symbol), allocatable :: symb
+    type(Value) :: val
+end type Binding
+
+type :: Env
+    type(Binding), allocatable :: bindings
+end type Env
+
+type, extends(Value) :: NumV
+  real :: n
+end type NumV
+
+type, extends(Value) :: BoolV
+  logical :: bool
+end type BoolV
+
+type, extends(Value) :: StrV
+  character(:), allocatable :: s
+end type StrV
+
+type, extends(Value) :: CloV
+  type(Symbol), allocatable :: params
+  type(ExprC) :: body 
+  type(Env) :: env
+end type CloV
+
 
 
 end module ast
