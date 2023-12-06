@@ -71,6 +71,39 @@ type, extends(Value) :: CloV
   type(Env) :: env
 end type CloV
 
+type :: ValidPrimOps
+end type ValidPrimOps
 
+type, extends (ValidPrimOps) :: PrimPlus
+    type(Symbol) :: plus
+end type PrimPlus
+
+type, extends (ValidPrimOps) :: PrimMinus
+    type(Symbol) :: minus
+end type PrimMinus
+
+type, extends (ValidPrimOps) :: PrimMultiply
+    type(Symbol) :: multiply
+end type PrimMultiply
+
+type, extends (ValidPrimOps) :: PrimDivide
+    type(Symbol) :: divide
+end type PrimDivide
+
+type, extends (ValidPrimOps) :: PrimLEQ
+    type(Symbol) :: divide
+end type PrimLEQ
+
+type, extends (ValidPrimOps) :: PrimEqual
+    type(Symbol) :: equal
+end type PrimEqual
+
+type, extends (ValidPrimOps) :: PrimError
+    type(Symbol) :: error
+end type PrimError
+
+type, extends(Value) :: PrimV
+  type(ValidPrimOps) :: prim
+end type PrimV
 
 end module ast
