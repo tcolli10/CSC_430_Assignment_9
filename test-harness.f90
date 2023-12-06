@@ -12,8 +12,10 @@ contains
 
         if (expected .eqv. given) then
             correct = .true.
+            print *, "Correct!"
         else
             correct = .false.
+            print *, "Incorrect!"
         endif
 
     end function assertBoolean
@@ -23,11 +25,13 @@ contains
         integer, intent(in) :: expected
         integer, intent(in) :: given
         logical :: correct
-        
+
         if (expected == given) then
             correct = .true.
+            print *, "Correct!"
         else
             correct = .false.
+            print *, "Incorrect!"
         endif
     
     end function assertNumber

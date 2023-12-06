@@ -8,7 +8,7 @@ FFLAGS = -Wall -Wextra
 EXECUTABLE = my_program
 
 # Source files
-SRCS = ast.f90 interpreter.f90 assignment9.f90
+SRCS = ast.f90 interpreter.f90 test-harness.f90 assignment9.f90 
 
 # Object files
 OBJS = $(SRCS:.f90=.o)
