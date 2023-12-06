@@ -7,9 +7,18 @@ module interpreter
 
     function interp(expr) result(val)
         real :: val
-        type(NumC) :: expr
+        class(ExprC) :: expr
+
+        val = 0
         
-        val = expr%n
+        select type (expr)
+        type is (NumC)
+            print *, "given NumC: ", expr%n
+        type is (StrC)
+            print *, "given StrC: ", expr%s
+        class default
+            print *, "unknown expr type"
+        end select
     end function interp
 
 end module interpreter
