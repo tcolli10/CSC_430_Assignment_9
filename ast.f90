@@ -14,7 +14,7 @@ end type Symbol
 
 
 type, extends(ExprC) :: NumC
-  real :: n
+  integer :: n
 end type NumC
 
 
@@ -22,10 +22,11 @@ type, extends (ExprC) :: StrC
   character(:), allocatable :: s
 end type StrC
 
-
+! changed to just contain a symbol for the operand, and two args
 type, extends (ExprC) :: AppC
-  type(ExprC) :: fun
-  type(ExprC), allocatable :: exprs
+  character :: fun
+  type(NumC) :: arg1
+  type(NumC) :: arg2
 end type AppC
 
 

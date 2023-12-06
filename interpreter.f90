@@ -3,19 +3,26 @@ module interpreter
     use ast
     implicit none
 
-    contains
+    contains 
 
     function interp(expr) result(val)
-        real :: val
-        class(ExprC) :: expr
-
-        val = 0
+        implicit none
+        class(ExprC), intent(in) :: expr
+        ! use int to be compatible with asserts
+        integer :: val
         
         select type (expr)
         type is (NumC)
             print *, "given NumC: ", expr%n
+            val = expr%n
         type is (StrC)
             print *, "given StrC: ", expr%s
+        type is (AppC)
+            if (expr%fun == '+') then
+                ! write a getter to grab args from struct
+                val = expr%arg1 + expr%arg2
+            endif
+
         class default
             print *, "unknown expr type"
         end select
