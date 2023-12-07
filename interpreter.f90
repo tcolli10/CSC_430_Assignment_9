@@ -10,13 +10,19 @@ module interpreter
         class(ExprC), intent(in) :: expr
         ! use int to be compatible with asserts
         integer :: val
+        character(:), allocatable :: str
+        character(:), allocatable :: symb
         
         select type (expr)
         type is (NumC)
-            print *, "given NumC: ", expr%n
+            !print *, "given NumC: ", expr%n
             val = expr%n
         type is (StrC)
-            print *, "given StrC: ", expr%s
+            !print *, "given StrC: ", expr%s
+            str = expr%s
+        type is (IdC)
+            !print *, "given IdC: ", expr%n%symb
+            symb = expr%n%symb
         type is (AppC)
             if (expr%fun == '+') then
                 ! write a getter to grab args from struct

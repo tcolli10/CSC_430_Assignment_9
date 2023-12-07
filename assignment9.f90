@@ -8,6 +8,7 @@ program MainProgram
     type(NumC) :: testNum
     type(NumC) :: testNum3
     type(StrC) :: testStr
+    type(IdC) :: testId
     real :: placeholder
     integer :: testInt
     logical :: testResult
@@ -21,6 +22,7 @@ program MainProgram
     testNum3 = NumC(3)
     testNum%n = 5
     testStr%s = "hello world"
+    testId%n%symb = "x"
     plus = AppC("+", testNum, testNum)
     minus = AppC("-", testNum, testNum)
     division = AppC("%", testNum, testNum)
@@ -29,6 +31,7 @@ program MainProgram
     ! Print the values
     placeholder = interp(testNum)
     placeholder = interp(testStr)
+    placeholder = interp(testId)
 
     ! do basic arithemetic
     testResult = assertNumber(interp(plus), 10)
