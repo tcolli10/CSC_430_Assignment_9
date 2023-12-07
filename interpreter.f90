@@ -15,13 +15,13 @@ module interpreter
         
         select type (expr)
         type is (NumC)
-            !print *, "given NumC: ", expr%n
+            print *, "given NumC: ", expr%n
             val = expr%n
         type is (StrC)
-            !print *, "given StrC: ", expr%s
+            print *, "given StrC: ", expr%s
             str = expr%s
         type is (IdC)
-            !print *, "given IdC: ", expr%n%symb
+            print *, "given IdC: ", expr%n%symb
             symb = expr%n%symb
         type is (AppC)
             if (expr%fun == '+') then
