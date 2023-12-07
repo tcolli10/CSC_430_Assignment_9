@@ -36,7 +36,7 @@ program MainProgram
     ! do basic arithemetic
     testResult = assertNumber(interp(plus), 10)
     testResult = assertNumber(interp(minus), 0)
-    testResult = assertNumber(interp(multiply), 25)
+    testResult = assertNumber(interp(multiply), 15)
     testResult = assertNumber(interp(division), 1)
 
     ! testing asserts

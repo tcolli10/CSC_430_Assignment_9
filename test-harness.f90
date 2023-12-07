@@ -4,42 +4,47 @@ module assert
     public assertBoolean
 
 contains
-    function assertBoolean(expected, given) result(correct)
+    function assertBoolean(actual, expected) result(correct)
         implicit none
         logical, intent(in) :: expected
-        logical, intent(in) :: given
+        logical, intent(in) :: actual
         logical :: correct
 
-        if (expected .eqv. given) then
+        if (actual .eqv. expected) then
             correct = .true.
             print *, "Correct!"
             print *, "Expected: ", expected
-            print *, "Given   : ", given
+            print *, "Actual  : ", actual
         else
             correct = .false.
             print *, "Incorrect!"
             print *, "Expected: ", expected
-            print *, "Given   : ", given
+            print *, "Actual  : ", actual
         endif
 
     end function assertBoolean
 
-    function assertNumber(expected, given) result(correct)
+    function assertNumber(actual, expected) result(correct)
         implicit none
         integer, intent(in) :: expected
-        integer, intent(in) :: given
+        integer, intent(in) :: actual
         logical :: correct
 
-        if (expected == given) then
+        if (actual == expected) then
             correct = .true.
             print *, "Correct!"
             print *, "Expected: ", expected
-            print *, "Given   : ", given
+            print *, "Actual  : ", actual
+            print *, ""
+
         else
             correct = .false.
+            
             print *, "Incorrect!"
             print *, "Expected: ", expected
-            print *, "Given   : ", given
+            print *, "Actual  : ", actual
+            print *, ""
+
         endif
     
     end function assertNumber
