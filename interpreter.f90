@@ -20,7 +20,13 @@ module interpreter
         type is (AppC)
             if (expr%fun == '+') then
                 ! write a getter to grab args from struct
-                val = expr%arg1 + expr%arg2
+                val = expr%arg1%n + expr%arg2%n
+            else if (expr%fun == '-') then
+                val = expr%arg1%n - expr%arg2%n
+            else if (expr%fun == '*') then
+                val = expr%arg1%n * expr%arg2%n
+            else if (expr%fun == '/') then
+                val = expr%arg1%n / expr%arg2%n
             endif
 
         class default

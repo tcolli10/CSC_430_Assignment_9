@@ -13,9 +13,13 @@ contains
         if (expected .eqv. given) then
             correct = .true.
             print *, "Correct!"
+            print *, "Expected: ", expected
+            print *, "Given   : ", given
         else
             correct = .false.
             print *, "Incorrect!"
+            print *, "Expected: ", expected
+            print *, "Given   : ", given
         endif
 
     end function assertBoolean
@@ -29,9 +33,13 @@ contains
         if (expected == given) then
             correct = .true.
             print *, "Correct!"
+            print *, "Expected: ", expected
+            print *, "Given   : ", given
         else
             correct = .false.
             print *, "Incorrect!"
+            print *, "Expected: ", expected
+            print *, "Given   : ", given
         endif
     
     end function assertNumber
