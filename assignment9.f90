@@ -30,9 +30,6 @@ program MainProgram
     division = AppC("/", testNum, testNum)
     multiply = AppC("*", testNum, testNum3)
 
-    i1 = IfC(BoolC(1), NumC(5), NumC(2))
-    i2 = IfC(BoolC(0), NumC(5), NumC(2))
-
     ! Print the values
     returnval = interp(testNum)
     call assertNumber(returnVal%n%n, 5.0)
@@ -42,7 +39,6 @@ program MainProgram
     ! still need to add env to lookup id
     !returnval = interp(testId)
 
-    ! fix tests
     ! ! do basic arithemetic
     returnVal = interp(plus)
     call assertNumber(returnVal%n%n, 10.0)
@@ -53,14 +49,17 @@ program MainProgram
     returnVal = interp(multiply)
     call assertNumber(returnVal%n%n, 15.0)
 
+    testNum%n = 5
+    division = AppC("/", testNum, testNum)
     returnVal = interp(division)
     call assertNumber(returnVal%n%n, 1.0)
 
-
-    ! ! ifC statements
+    ! ifC statements
+    i1 = IfC(BoolC(1), NumC(5), NumC(2))
     returnVal = interp(i1)
     call assertNumber(returnVal%n%n, 5.0)
 
+    i2 = IfC(BoolC(0), NumC(5), NumC(2))
     returnVal = interp(i2)
     call assertNumber(returnVal%n%n, 2.0)
 
