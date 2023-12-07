@@ -25,7 +25,7 @@ program MainProgram
     testId%n%symb = "x"
     plus = AppC("+", testNum, testNum)
     minus = AppC("-", testNum, testNum)
-    division = AppC("%", testNum, testNum)
+    division = AppC("/", testNum, testNum)
     multiply = AppC("*", testNum, testNum3)
   
     ! Print the values
