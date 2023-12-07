@@ -1,29 +1,20 @@
-# Makefile
+COMPILER = gfortran
+FLAGS = -Wall
 
-# Compiler and flags
-FC = gfortran
-FFLAGS = -Wall -Wextra
+my_program: ast.o interpreter.o test-harness.o assignment9.o
+	$(COMPILER) $(FLAGS) assignment9.o ast.o interpreter.o test-harness.o -o my_program
 
-# Executable name
-EXECUTABLE = my_program
+assignment9.o: assignment9.f90
+	$(COMPILER) $(FLAGS) -c assignment9.f90 -o assignment9.o
 
-# Source files
-SRCS = ast.f90 interpreter.f90 test-harness.f90 assignment9.f90 
+ast.o: ast.f90
+	$(COMPILER) $(FLAGS) -c ast.f90 -o ast.o
 
-# Object files
-OBJS = $(SRCS:.f90=.o)
+interpreter.o: interpreter.f90
+	$(COMPILER) $(FLAGS) -c interpreter.f90 -o interpreter.o
 
-# Rule to compile .f90 to .o
-%.o: %.f90
-	$(FC) $(FFLAGS) -c $< -o $@
+test-harness.o: test-harness.f90
+	$(COMPILER) $(FLAGS) -c test-harness.f90 -o test-harness.o
 
-# Default target
-all: $(EXECUTABLE)
-
-# Linking
-$(EXECUTABLE): $(OBJS)
-	$(FC) $(OBJS) -o $(EXECUTABLE)
-
-# Clean target
 clean:
-	rm -f $(OBJS) $(EXECUTABLE)
+	rm -rf *.o *.mod my_program
