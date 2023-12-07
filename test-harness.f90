@@ -4,42 +4,35 @@ module assert
     public assertBoolean
 
 contains
-    function assertBoolean(actual, expected) result(correct)
+    subroutine assertBoolean(actual, expected) 
         implicit none
         logical, intent(in) :: expected
         logical, intent(in) :: actual
-        logical :: correct
 
         if (actual .eqv. expected) then
-            correct = .true.
             print *, "Correct!"
             print *, "Expected: ", expected
             print *, "Actual  : ", actual
         else
-            correct = .false.
             print *, "Incorrect!"
             print *, "Expected: ", expected
             print *, "Actual  : ", actual
         endif
 
-    end function assertBoolean
+    end subroutine assertBoolean
 
-    function assertNumber(actual, expected) result(correct)
+    subroutine assertNumber(actual, expected) 
         implicit none
-        integer, intent(in) :: expected
-        integer, intent(in) :: actual
-        logical :: correct
+        real, intent(in) :: expected
+        real, intent(in) :: actual
 
         if (actual == expected) then
-            correct = .true.
             print *, "Correct!"
             print *, "Expected: ", expected
             print *, "Actual  : ", actual
             print *, ""
 
-        else
-            correct = .false.
-            
+        else            
             print *, "Incorrect!"
             print *, "Expected: ", expected
             print *, "Actual  : ", actual
@@ -47,7 +40,27 @@ contains
 
         endif
     
-    end function assertNumber
+    end subroutine assertNumber
+
+    subroutine assertString(actual, expected)
+        implicit none
+        character(len=*), intent(in) :: expected
+        character(len=*), intent(in) :: actual
+    
+        if (actual == expected) then
+            print *, "Correct!"
+            print *, "Expected: ", expected
+            print *, "Actual  : ", actual
+            print *, ""
+        else
+            print *, "Incorrect!"
+            print *, "Expected: ", expected
+            print *, "Actual  : ", actual
+            print *, ""
+        endif
+    
+    end subroutine assertString
+    
 end module assert
         
 
