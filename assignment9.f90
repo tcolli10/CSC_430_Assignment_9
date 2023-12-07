@@ -16,6 +16,8 @@ program MainProgram
     type(AppC) :: minus
     type(AppC) :: division
     type(AppC) :: multiply
+    type(IfC) :: i1
+    type(IfC) :: i2
   
     ! variable initialization
     testInt = 5
@@ -27,6 +29,9 @@ program MainProgram
     minus = AppC("-", testNum, testNum)
     division = AppC("/", testNum, testNum)
     multiply = AppC("*", testNum, testNum3)
+
+    i1 = IfC(BoolC(1), NumC(5), NumC(2))
+    i2 = IfC(BoolC(0), NumC(5), NumC(2))
   
     ! Print the values
     placeholder = interp(testNum)
@@ -38,6 +43,10 @@ program MainProgram
     testResult = assertNumber(interp(minus), 0)
     testResult = assertNumber(interp(multiply), 15)
     testResult = assertNumber(interp(division), 1)
+
+    ! ifC statements
+    testResult = assertNumber(interp(i1), 5)
+    testResult = assertNumber(interp(i2), 2)
 
     ! testing asserts
     testResult = assertNumber(testInt, testInt)

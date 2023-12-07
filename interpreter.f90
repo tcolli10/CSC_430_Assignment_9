@@ -5,7 +5,7 @@ module interpreter
 
     contains 
 
-    function interp(expr) result(val)
+    recursive function interp(expr) result(val)
         implicit none
         class(ExprC), intent(in) :: expr
         ! use int to be compatible with asserts
@@ -23,6 +23,12 @@ module interpreter
         type is (IdC)
             print *, "given IdC: ", expr%n%symb
             symb = expr%n%symb
+        type is (BoolC)
+            if (expr%b == 1) then
+                val = 1
+            else
+                val = 0
+            endif
         type is (AppC)
             if (expr%fun == '+') then
                 ! write a getter to grab args from struct
@@ -34,6 +40,14 @@ module interpreter
             else if (expr%fun == '/') then
                 val = expr%arg1%n / expr%arg2%n
             endif
+        type is (IfC)
+            if (interp(expr%cond) == 1) then
+                val = interp(expr%then)
+            else 
+                val = interp(expr%else)
+            endif
+                    
+            
 
         class default
             print *, "unknown expr type"

@@ -29,21 +29,25 @@ type, extends (ExprC) :: AppC
   type(NumC) :: arg2
 end type AppC
 
-
-type, extends (ExprC) :: IfC
-  type(ExprC) :: expr, then, else
-end type IfC
-
-
 type, extends(ExprC) :: IdC
   type(Symbol) :: n
 end type IdC
 
-
+! if true, 1, otherwise 0
 type, extends (ExprC) :: LamC
   type(Symbol), allocatable :: params
   type(ExprC) :: body
 end type LamC
+
+type, extends(ExprC) :: BoolC
+  integer :: b
+end type BoolC
+
+type, extends (ExprC) :: IfC
+  type(BoolC) :: cond
+  type(NumC) :: then, else
+end type IfC
+
 
 type :: Binding
     type(Symbol), allocatable :: symb
